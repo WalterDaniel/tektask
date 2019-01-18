@@ -18,10 +18,30 @@ const Main = styled.main`
 `;
 
 class App extends Component {
+    constructor(...props) {
+        super(...props);
+
+        this.state = {
+            sidebarCollapsed: false
+        };
+
+        this.handleSidebarCollapseToggle = this.handleSidebarCollapseToggle.bind(
+            this
+        );
+    }
+
+    handleSidebarCollapseToggle() {
+        const sidebarCollapsedStatus = this.state.sidebarCollapsed;
+        this.setState({sidebarCollapsed: !sidebarCollapsedStatus});
+    }
+
   render() {
     return (
       <Wrapper>
-          <Sidebar/>
+          <Sidebar
+              collapsed={this.state.sidebarCollapsed}
+              onSidebarCollapseToggle={this.handleSidebarCollapseToggle}
+          />
         <Main>
           <header>
               My very first project <GradeOutlined/>
