@@ -1,26 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+
+import "./common/reset.css";
+import GradeOutlined from "@material-ui/icons/GradeOutlined";
+import styled from "styled-components";
+import Sidebar from "./components/sidebar/sidebar";
+
+const Wrapper = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+`;
+
+const Main = styled.main`
+  background: #f5f5f5;
+  width: 100%;
+  min-height: 100vh;
+`;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Wrapper>
+        <Sidebar/>
+        <Main>
+          <header>
+            My very first project <GradeOutlined/>
+          </header>
+          <h2>Content</h2>
+        </Main>
+      </Wrapper>
     );
   }
 }
