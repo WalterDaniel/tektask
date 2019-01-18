@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Logo from "../logo/logo";
 
 // SideNav
 const Sidebar = styled.div`
@@ -17,33 +18,25 @@ const LogoContainer = styled.div`
   padding: 10px;
   overflow: hidden;
   background-color: #2f3436;
-  color: white;
 `;
 
 export default ({ collapsed }) => {
   return (
     <Sidebar collapsed={collapsed}>
-        <LogoContainer collapsed={collapsed} >
-          LOGO
+        <LogoContainer collapsed={collapsed}>
+            <Logo/>
         </LogoContainer>
 
       <ul>
         <li>
-          <a href="/dashboard">
-            Dashboard
-          </a>
+            <a href="/dashboard">Dashboard</a>
         </li>
         <li>
-          <a href="/myprojects">
-            My Projects
-          </a>
+            <a href="/myprojects">My Projects</a>
         </li>
         <li>
-          <a href="/team">
-            Team
-          </a>
+            <a href="/team">Team</a>
         </li>
-
       </ul>
     </Sidebar>
   );
