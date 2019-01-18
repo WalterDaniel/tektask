@@ -21,10 +21,10 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-        <Sidebar/>
+          <Sidebar/>
         <Main>
           <header>
-            My very first project <GradeOutlined/>
+              My very first project <GradeOutlined/>
           </header>
           <h2>Content</h2>
         </Main>
