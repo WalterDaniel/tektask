@@ -1,46 +1,39 @@
 import React from "react";
 import styled from "styled-components";
-import Logo from "../logo/logo";
+import CompanyBrand from "../company-brand/company-brand";
 import CollapseToggleBtn from "./collapse-toggle-btn";
 
-const navWidthCollapsed = 66;
-const navWidthExpanded = 243;
+const sidebarCollapsedWidth = 66;
+const sidebarExpandedWidth = 243;
+
+const sidebarWidth = props =>
+    props.collapsed ? sidebarCollapsedWidth : sidebarExpandedWidth;
 
 // SideNav
 const Sidebar = styled.div`
   background-color: #fff;
   border-right: 1px solid #ddd;
-  width: ${props => (props.collapsed ? navWidthCollapsed : navWidthExpanded)}px;
-  min-width: ${props =>
-    props.collapsed ? navWidthCollapsed : navWidthExpanded}px;
-  max-width: ${props =>
-    props.collapsed ? navWidthCollapsed : navWidthExpanded}px;
+  width: ${sidebarWidth}px;
+  min-width: ${sidebarWidth}px;
+  max-width: ${sidebarWidth}px;
   height: 100vh;
   transition: all 0.3s;
-`;
-
-const LogoContainer = styled.div`
-  min-height: 50px;
-  max-height: 50px;
-  padding: 10px;
-  overflow: hidden;
-  background-color: #2f3436;
 `;
 
 const CollapseToggleBtnContainer = styled.div`
   position: absolute;
   bottom: 250px;
-  left: ${props =>
-    (props.collapsed ? navWidthCollapsed : navWidthExpanded) - 13}px;
+  left: calc(${sidebarWidth}px - 13px);
   transition: all 0.3s;
 `;
 
 export default ({collapsed, onSidebarCollapseToggle}) => {
   return (
     <Sidebar collapsed={collapsed}>
-        <LogoContainer collapsed={collapsed}>
-            <Logo/>
-        </LogoContainer>
+        <CompanyBrand
+            collapsed={collapsed}
+            sidebarWidth={sidebarWidth(collapsed)}
+        />
 
         <CollapseToggleBtnContainer collapsed={collapsed}>
             <CollapseToggleBtn
