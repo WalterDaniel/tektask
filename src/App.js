@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
 import "./common/reset.css";
-import GradeOutlined from "@material-ui/icons/GradeOutlined";
 import styled from "styled-components";
 import Sidebar from "./components/sidebar/sidebar";
+import Icon from "./components/icon/icon";
 
 const Wrapper = styled.div`
   display: flex;
@@ -22,7 +22,44 @@ class App extends Component {
         super(...props);
 
         this.state = {
-            sidebarCollapsed: false
+            sidebar: {
+                collapsed: false,
+                sections: [
+                    {
+                        iconName: "Dashboard",
+                        name: "Dashboard",
+                        links: [
+                            {
+                                iconName: "ViewWeek",
+                                href: "/dashboard/my_week",
+                                value: "My Week"
+                            }
+                        ]
+                    },
+                    {
+                        iconName: "DeveloperBoard",
+                        name: "My Projects",
+                        links: [
+                            {
+                                iconName: "StarRate",
+                                href: "/my_projects/test",
+                                value: "Test"
+                            }
+                        ]
+                    },
+                    {
+                        iconName: "People",
+                        name: "Team",
+                        links: [
+                            {
+                                iconName: "PeopleOutline",
+                                href: "/team/front_end",
+                                value: "Front End"
+                            }
+                        ]
+                    }
+                ]
+            }
         };
 
         this.handleSidebarCollapseToggle = this.handleSidebarCollapseToggle.bind(
@@ -31,9 +68,19 @@ class App extends Component {
     }
 
     handleSidebarCollapseToggle() {
-        const sidebarCollapsedStatus = this.state.sidebarCollapsed;
-        this.setState({sidebarCollapsed: !sidebarCollapsedStatus});
+        const sidebarCollapsedStatus = this.state.sidebar.collapsed;
+
+        this.setState({sidebar: {collapsed: !sidebarCollapsedStatus}});
     }
+
+    // componentWillMount() {
+    //   const value = $("#rc_seo_subscription_wsMonthsQuantity").val();
+    //   const wsMonthsQuantityData = value ? JSON.parse(value) : [];
+    //
+    //   this.setState({
+    //     websites: [...wsMonthsQuantityData]
+    //   });
+    // }
 
   render() {
     return (
@@ -44,7 +91,7 @@ class App extends Component {
           />
         <Main>
           <header>
-              My very first project <GradeOutlined/>
+              My very first project <Icon icon={"GradeOutlined"}/>
           </header>
           <h2>Content</h2>
         </Main>
