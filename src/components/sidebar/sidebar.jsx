@@ -27,7 +27,8 @@ const CollapseToggleBtnContainer = styled.div`
   transition: all 0.3s;
 `;
 
-export default ({collapsed, onSidebarCollapseToggle}) => {
+export default ({sidebarStatus, onSidebarCollapseToggle}) => {
+    const {collapsed, sections} = sidebarStatus;
   return (
     <Sidebar collapsed={collapsed}>
         <CompanyBrand
@@ -42,17 +43,13 @@ export default ({collapsed, onSidebarCollapseToggle}) => {
             />
         </CollapseToggleBtnContainer>
 
-      <ul>
-        <li>
-            <a href="/dashboard">Dashboard</a>
-        </li>
-        <li>
-            <a href="/myprojects">My Projects</a>
-        </li>
-        <li>
-            <a href="/team">Team</a>
-        </li>
-      </ul>
+        {sections.length > 0 && (
+            <ul>
+                {sections.map(section => (
+                    <li>{section.name}</li>
+                ))}
+            </ul>
+        )}
     </Sidebar>
   );
 };

@@ -39,7 +39,7 @@ class App extends Component {
     return (
       <Wrapper>
           <Sidebar
-              collapsed={this.state.sidebarCollapsed}
+              sidebarStatus={this.state.sidebar}
               onSidebarCollapseToggle={this.handleSidebarCollapseToggle}
           />
         <Main>
