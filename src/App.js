@@ -5,6 +5,8 @@ import styled from "styled-components";
 import Sidebar from "./components/sidebar/sidebar";
 import Icon from "./components/icon/icon";
 
+import SidebarState from "./__mock__/sidebar/sidebarState";
+
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
@@ -21,46 +23,7 @@ class App extends Component {
     constructor(...props) {
         super(...props);
 
-        this.state = {
-            sidebar: {
-                collapsed: false,
-                sections: [
-                    {
-                        iconName: "Dashboard",
-                        name: "Dashboard",
-                        links: [
-                            {
-                                iconName: "ViewWeek",
-                                href: "/dashboard/my_week",
-                                value: "My Week"
-                            }
-                        ]
-                    },
-                    {
-                        iconName: "DeveloperBoard",
-                        name: "My Projects",
-                        links: [
-                            {
-                                iconName: "StarRate",
-                                href: "/my_projects/test",
-                                value: "Test"
-                            }
-                        ]
-                    },
-                    {
-                        iconName: "People",
-                        name: "Team",
-                        links: [
-                            {
-                                iconName: "PeopleOutline",
-                                href: "/team/front_end",
-                                value: "Front End"
-                            }
-                        ]
-                    }
-                ]
-            }
-        };
+        this.state = {};
 
         this.handleSidebarCollapseToggle = this.handleSidebarCollapseToggle.bind(
             this
@@ -68,19 +31,20 @@ class App extends Component {
     }
 
     handleSidebarCollapseToggle() {
-        const sidebarCollapsedStatus = this.state.sidebar.collapsed;
+        const sidebar = this.state.sidebar;
+        const {collapsed} = sidebar;
+        sidebar.collapsed = !collapsed;
 
-        this.setState({sidebar: {collapsed: !sidebarCollapsedStatus}});
+        this.setState(sidebar);
     }
 
-    // componentWillMount() {
-    //   const value = $("#rc_seo_subscription_wsMonthsQuantity").val();
-    //   const wsMonthsQuantityData = value ? JSON.parse(value) : [];
-    //
-    //   this.setState({
-    //     websites: [...wsMonthsQuantityData]
-    //   });
-    // }
+    componentWillMount() {
+        const {sidebar} = SidebarState;
+
+        this.setState({
+            sidebar: sidebar
+        });
+    }
 
   render() {
     return (

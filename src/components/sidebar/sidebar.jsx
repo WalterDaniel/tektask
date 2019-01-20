@@ -3,6 +3,8 @@ import styled from "styled-components";
 import CompanyBrand from "../company-brand/company-brand";
 import CollapseToggleBtn from "./collapse-toggle-btn";
 
+import Icon from "../icon/icon";
+
 const sidebarCollapsedWidth = 66;
 const sidebarExpandedWidth = 243;
 
@@ -45,8 +47,20 @@ export default ({sidebarStatus, onSidebarCollapseToggle}) => {
 
         {sections.length > 0 && (
             <ul>
-                {sections.map(section => (
-                    <li>{section.name}</li>
+                {sections.map((section, key) => (
+                    <div>
+                        <li key={key}>
+                            <Icon icon={section.iconName}/> {section.name}
+                        </li>
+                        <ul>
+                            {section.links.map((link, key2) => (
+                                <li key={key2}>
+                                    <Icon icon={link.iconName}/>
+                                    <a href={link.href}>{link.value}</a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 ))}
             </ul>
         )}
