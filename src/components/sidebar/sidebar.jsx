@@ -30,6 +30,9 @@ const CollapseToggleBtnContainer = styled.div`
 `;
 
 const StyledListGroupItem = styled(ListGroup.Item)`
+  && {
+    padding: 0;
+  }
   &.current {
     background-color: #f5f5f5;
   }
@@ -61,7 +64,7 @@ export default ({
             <div key={section.slug + key}>
               <StyledListGroupItem
                 className={
-                  (collapsed ? " collapsed" : " asdasd") +
+                  (collapsed ? " collapsed" : "") +
                   (key === 1 ? " current" : "")
                 }
               >

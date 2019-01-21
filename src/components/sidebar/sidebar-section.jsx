@@ -7,6 +7,8 @@ import { Collapse, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 const SectionContainer = styled.div`
+  padding: 0 15px;
+
   ${ListGroup.Item}.current.collapsed & {
     color: #056cc2;
   }
@@ -14,12 +16,11 @@ const SectionContainer = styled.div`
 
 const SectionTitle = styled.div`
   font-weight: bold;
+  font-size: 0.9em;
   display: flex;
   justify-content: space-between;
-`;
-
-const SectionOpenToggle = styled.div`
-  vertical-align: middle;
+  padding: 5px 0px;
+  align-items: center;
 `;
 
 const StyledCollapse = styled(Collapse)`
@@ -31,19 +32,18 @@ export default ({ section, onSectionCollapseToggle, sidebarCollapsed }) => {
 
   return (
     <SectionContainer>
-      <SectionTitle>
+      <SectionTitle
+        onClick={() => onSectionCollapseToggle(section)}
+        aria-controls={slug}
+        aria-expanded={open}
+      >
         {sidebarCollapsed ? (
           <Icon icon={section.iconName} />
         ) : (
           <>
             <IconText iconName={section.iconName} text={section.name} />
-            <SectionOpenToggle
-              onClick={() => onSectionCollapseToggle(section)}
-              aria-controls={slug}
-              aria-expanded={open}
-            >
-                <Icon icon={"MoreHoriz"} />
-            </SectionOpenToggle>
+
+            <Icon icon={"MoreHoriz"} />
           </>
         )}
       </SectionTitle>
