@@ -3,8 +3,8 @@ import Icon from "../icon/icon";
 import IconText from "../icon/icon-text";
 import styled from "styled-components";
 import {ListGroup} from "react-bootstrap";
-
 import {Collapse, Nav} from "react-bootstrap";
+import {NavLink} from "react-router-dom";
 
 const SectionContainer = styled.div`
   ${ListGroup.Item}.current.collapsed & {
@@ -53,9 +53,9 @@ export default ({section, onSectionCollapseToggle, sidebarCollapsed}) => {
                     <div id={slug}>
                         <Nav className="flex-column">
                             {section.links.map((link, key) => (
-                                <Nav.Link key={link.slug + key} eventKey={link.slug}>
+                                <NavLink key={key} to={link.href} activeClassName="current">
                                     <IconText iconName={link.iconName} text={link.value}/>
-                                </Nav.Link>
+                                </NavLink>
                             ))}
                         </Nav>
                     </div>

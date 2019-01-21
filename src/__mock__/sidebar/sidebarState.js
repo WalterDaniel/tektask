@@ -32,7 +32,7 @@ const sidebarState = {
             },
             {
                 iconName: "People",
-                slug: "people",
+                slug: "team",
                 name: "Team",
                 open: true,
                 links: [
