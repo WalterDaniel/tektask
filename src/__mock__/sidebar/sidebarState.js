@@ -13,6 +13,12 @@ const sidebarState = {
             iconName: "ViewWeek",
             href: "/dashboard/my_week",
             value: "My Week"
+          },
+          {
+            slug: "dashboard_my_timesheet",
+            iconName: "EventNote",
+            href: "/dashboard/my_timesheet",
+            value: "My Timesheet"
           }
         ]
       },
@@ -27,6 +33,24 @@ const sidebarState = {
             iconName: "StarRate",
             href: "/my_projects/test",
             value: "Test"
+          },
+          {
+            slug: "my_projects_very_first",
+            iconName: "StarRate",
+            href: "/my_projects/very_first",
+            value: "My very first project"
+          },
+          {
+            slug: "my_projects_private_board",
+            iconName: "StarRate",
+            href: "/my_projects/private_board",
+            value: "Private board"
+          },
+          {
+            slug: "my_projects_blueoceantech",
+            iconName: "StarRate",
+            href: "/my_projects/blueoceantech",
+            value: "Blueoceantech"
           }
         ]
       },
