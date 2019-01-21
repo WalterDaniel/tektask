@@ -24,7 +24,7 @@ const HeaderSection = styled.div`
   align-items: center;
 
   & > div {
-    padding: 8px;
+    padding: 9px;
   }
 `;
 
@@ -102,7 +102,7 @@ export default ({ pageTitle }) => {
           <Icon icon={"NotificationsNone"} />
         </div>
 
-          <ProfileSettings />
+        <ProfileSettings />
       </HeaderSection>
     </Header>
   );

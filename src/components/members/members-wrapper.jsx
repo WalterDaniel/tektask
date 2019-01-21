@@ -5,14 +5,28 @@ import styled from "styled-components";
 
 const MemberCirclesWrapper = styled.div`
   display: flex;
+  flex-flow: row-reverse;
+  margin-right: 10px;
+
+  & > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      color: black;
+      font-size: smaller;
+      margin-inline-start: 5px;
+    }
+  }
 `;
 
 export default ({ joined }) => {
-  const memberCirclesColor = [...MemberCirclesColor(6)];
+  const memberCirclesColor = [...MemberCirclesColor(10)];
 
   return (
     <MemberCirclesWrapper>
-      {memberCirclesColor.map((c, key) => (
+      {memberCirclesColor.reverse().map((c, key) => (
         <MemberCircle
           key={key}
           colorValue={c.color}

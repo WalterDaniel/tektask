@@ -7,10 +7,10 @@ const Circle = styled.div`
   width: 30px;
   border-radius: 50%;
 
-  margin-right: ${({ joined }) => (joined ? "-10" : "0")}px;
+  margin-right: ${({ joined }) => (joined ? "-10" : "7")}px;
 `;
 
-export default ({ colorValue, quantity, joined }) => {
+export default ({ colorValue = "#74CAE9", quantity = 0, joined = false }) => {
   return (
     <Circle colorValue={colorValue} joined={joined}>
       {quantity > 0 && <span> {quantity} </span>}
