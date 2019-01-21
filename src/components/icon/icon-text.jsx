@@ -4,8 +4,8 @@ import Icon from "./icon";
 
 const IconText = styled.div``;
 
-export default ({iconName, text}) => (
-    <IconText>
-        <Icon icon={iconName}/> {text}
-    </IconText>
+export default ({ iconName, text }) => (
+  <IconText>
+    <Icon icon={iconName} /> {text}
+  </IconText>
 );

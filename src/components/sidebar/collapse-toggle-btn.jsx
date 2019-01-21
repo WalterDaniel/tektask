@@ -19,18 +19,18 @@ const CollapseBtn = styled.button`
   }
 `;
 
-const CollapseToggleBtn = ({collapsed, onSidebarCollapseToggle}) => {
-    return (
-        <CollapseBtn
-            type="button"
-            title="Sidebar collapse toggle"
-            onClick={() => {
-                onSidebarCollapseToggle();
-            }}
-        >
-            {collapsed ? <ChevronRight/> : <ChevronLeft/>}
-        </CollapseBtn>
-    );
+const CollapseToggleBtn = ({ collapsed, onSidebarCollapseToggle }) => {
+  return (
+    <CollapseBtn
+      type="button"
+      title="Sidebar collapse toggle"
+      onClick={() => {
+        onSidebarCollapseToggle();
+      }}
+    >
+      {collapsed ? <ChevronRight /> : <ChevronLeft />}
+    </CollapseBtn>
+  );
 };
 
 export default CollapseToggleBtn;

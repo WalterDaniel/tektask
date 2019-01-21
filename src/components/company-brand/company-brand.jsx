@@ -22,12 +22,12 @@ const CompanyBrandContainer = styled.div`
   }
 `;
 
-export default ({collapsed, sidebarWidth}) => {
-    return (
-        <CompanyBrandContainer collapsed={collapsed} sidebarWidth={sidebarWidth}>
-            <a href="/" title="TekTask" rel="home">
-                <LogoImg collapsed={collapsed}/>
-            </a>
-        </CompanyBrandContainer>
-    );
+export default ({ collapsed, sidebarWidth }) => {
+  return (
+    <CompanyBrandContainer collapsed={collapsed} sidebarWidth={sidebarWidth}>
+      <a href="/" title="TekTask" rel="home">
+        <LogoImg collapsed={collapsed} />
+      </a>
+    </CompanyBrandContainer>
+  );
 };

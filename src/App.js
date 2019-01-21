@@ -4,11 +4,11 @@ import "./common/reset.css";
 import styled from "styled-components";
 import Sidebar from "./components/sidebar/sidebar";
 import Icon from "./components/icon/icon";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Content from "./components/content/content";
 
 import SidebarState from "./__mock__/sidebar/sidebarState";
-import {Alert} from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 
 const Wrapper = styled.div`
   display: flex;
@@ -23,98 +23,98 @@ const Main = styled.main`
 `;
 
 class App extends Component {
-    constructor(...props) {
-        super(...props);
+  constructor(...props) {
+    super(...props);
 
-        this.state = {
-            sidebar: {
-                collapsed: false,
-                sections: []
-            }
-        };
+    this.state = {
+      sidebar: {
+        collapsed: false,
+        sections: []
+      }
+    };
 
-        this.handleSidebarCollapseToggle = this.handleSidebarCollapseToggle.bind(
-            this
-        );
-        this.handleSectionCollapseToggle = this.handleSectionCollapseToggle.bind(
-            this
-        );
-        this.getAllLinks = this.getAllLinks.bind(this);
-    }
+    this.handleSidebarCollapseToggle = this.handleSidebarCollapseToggle.bind(
+      this
+    );
+    this.handleSectionCollapseToggle = this.handleSectionCollapseToggle.bind(
+      this
+    );
+    this.getAllLinks = this.getAllLinks.bind(this);
+  }
 
-    handleSidebarCollapseToggle() {
-        const sidebar = this.state.sidebar;
-        const {collapsed} = sidebar;
-        sidebar.collapsed = !collapsed;
+  handleSidebarCollapseToggle() {
+    const sidebar = this.state.sidebar;
+    const { collapsed } = sidebar;
+    sidebar.collapsed = !collapsed;
 
-        this.setState(sidebar);
-    }
+    this.setState(sidebar);
+  }
 
-    handleSectionCollapseToggle(section) {
-        const sidebar = this.state.sidebar;
-        const sections = [...sidebar.sections];
-        const index = sections.indexOf(section);
-        sections[index] = {...section};
-        sections[index].open = !section.open;
-        sidebar.sections = sections;
-        this.setState(sidebar);
-    }
+  handleSectionCollapseToggle(section) {
+    const sidebar = this.state.sidebar;
+    const sections = [...sidebar.sections];
+    const index = sections.indexOf(section);
+    sections[index] = { ...section };
+    sections[index].open = !section.open;
+    sidebar.sections = sections;
+    this.setState(sidebar);
+  }
 
-    getAllLinks() {
-        const sidebar = this.state.sidebar;
-        const sections = [...sidebar.sections];
-        return [].concat.apply(
-            [],
-            sections.map(section => {
-                const {links} = section;
-                return [...links];
-            })
-        );
-    }
+  getAllLinks() {
+    const sidebar = this.state.sidebar;
+    const sections = [...sidebar.sections];
+    return [].concat.apply(
+      [],
+      sections.map(section => {
+        const { links } = section;
+        return [...links];
+      })
+    );
+  }
 
-    componentWillMount() {
-        const {sidebar} = SidebarState;
+  componentWillMount() {
+    const { sidebar } = SidebarState;
 
-        this.setState({
-            sidebar: sidebar
-        });
-    }
+    this.setState({
+      sidebar: sidebar
+    });
+  }
 
   render() {
     return (
-        <Router>
-            <Wrapper>
+      <Router>
+        <Wrapper>
           <Sidebar
-              sidebarStatus={this.state.sidebar}
-              onSidebarCollapseToggle={this.handleSidebarCollapseToggle}
-              onSectionCollapseToggle={this.handleSectionCollapseToggle}
+            sidebarStatus={this.state.sidebar}
+            onSidebarCollapseToggle={this.handleSidebarCollapseToggle}
+            onSectionCollapseToggle={this.handleSectionCollapseToggle}
           />
-                <Main>
-                    <header>
-                        My very first project <Icon icon={"GradeOutlined"}/>
-                    </header>
+          <Main>
+            <header>
+              My very first project <Icon icon={"GradeOutlined"} />
+            </header>
 
-                    <div>
-                        <Switch>
-                            {this.getAllLinks().map((link, key) => (
-                                <Route
-                                    key={key}
-                                    path={link.href}
-                                    render={props => <Content {...props} extra={link}/>}
-                                />
-                            ))}
-                            <Route
-                                render={() => (
-                                    <Alert variant={"info"}>
-                                        No hay contenido, use el nav del sidebar.
-                                    </Alert>
-                                )}
-                            />
-                        </Switch>
-                    </div>
-                </Main>
-            </Wrapper>
-        </Router>
+            <div>
+              <Switch>
+                {this.getAllLinks().map((link, key) => (
+                  <Route
+                    key={key}
+                    path={link.href}
+                    render={props => <Content {...props} extra={link} />}
+                  />
+                ))}
+                <Route
+                  render={() => (
+                    <Alert variant={"info"}>
+                      No hay contenido, use el nav del sidebar.
+                    </Alert>
+                  )}
+                />
+              </Switch>
+            </div>
+          </Main>
+        </Wrapper>
+      </Router>
     );
   }
 }
