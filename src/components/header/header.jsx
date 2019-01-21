@@ -5,10 +5,11 @@ import IconText from "../icon/icon-text";
 import { Button } from "react-bootstrap";
 import { DateInterval } from "../../__mock__/data/mock-data";
 import MembersWrapper from "../members/members-wrapper";
+import ProfileSettings from "../members/profile-settings";
 
 const Header = styled.header`
   background-color: #24282a;
-  padding: 0 2.3em;
+  padding: 0 2em;
   width: 100%;
   height: 80px;
   display: flex;
@@ -77,9 +78,7 @@ export default ({ pageTitle }) => {
           </div>
         </div>
 
-        <div>
-          <MembersWrapper joined={true} />
-        </div>
+        <MembersWrapper joined={true} />
 
         <div>
           <Button variant="primary" size="sm">
@@ -95,13 +94,15 @@ export default ({ pageTitle }) => {
       <HeaderSection>
         <div>
           <Button variant="primary" size="sm">
-            Add Project
+            ADD PROJECT
           </Button>
         </div>
 
         <div>
           <Icon icon={"NotificationsNone"} />
         </div>
+
+          <ProfileSettings />
       </HeaderSection>
     </Header>
   );
