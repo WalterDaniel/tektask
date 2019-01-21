@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "./common/reset.css";
 import styled from "styled-components";
 import Sidebar from "./components/sidebar/sidebar";
-import Icon from "./components/icon/icon";
+import Header from "./components/header/header";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Content from "./components/content/content";
 
@@ -90,9 +90,18 @@ class App extends Component {
             onSectionCollapseToggle={this.handleSectionCollapseToggle}
           />
           <Main>
-            <header>
-              My very first project <Icon icon={"GradeOutlined"} />
-            </header>
+            <Switch>
+              {this.getAllLinks().map((link, key) => (
+                <Route
+                  key={key}
+                  path={link.href}
+                  render={props => <Header {...props} pageTitle={link.value} />}
+                />
+              ))}
+              <Route
+                render={props => <Header {...props} pageTitle={"Home"} />}
+              />
+            </Switch>
 
             <div>
               <Switch>
