@@ -4,9 +4,11 @@ import "./common/reset.css";
 import styled from "styled-components";
 import Sidebar from "./components/sidebar/sidebar";
 import Icon from "./components/icon/icon";
-import {Alert} from "react-bootstrap";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Content from "./components/content/content";
 
 import SidebarState from "./__mock__/sidebar/sidebarState";
+import {Alert} from "react-bootstrap";
 
 const Wrapper = styled.div`
   display: flex;
@@ -37,6 +39,7 @@ class App extends Component {
         this.handleSectionCollapseToggle = this.handleSectionCollapseToggle.bind(
             this
         );
+        this.getAllLinks = this.getAllLinks.bind(this);
     }
 
     handleSidebarCollapseToggle() {
@@ -57,6 +60,18 @@ class App extends Component {
         this.setState(sidebar);
     }
 
+    getAllLinks() {
+        const sidebar = this.state.sidebar;
+        const sections = [...sidebar.sections];
+        return [].concat.apply(
+            [],
+            sections.map(section => {
+                const {links} = section;
+                return [...links];
+            })
+        );
+    }
+
     componentWillMount() {
         const {sidebar} = SidebarState;
 
@@ -67,23 +82,39 @@ class App extends Component {
 
   render() {
     return (
-      <Wrapper>
+        <Router>
+            <Wrapper>
           <Sidebar
               sidebarStatus={this.state.sidebar}
               onSidebarCollapseToggle={this.handleSidebarCollapseToggle}
               onSectionCollapseToggle={this.handleSectionCollapseToggle}
           />
-        <Main>
-          <header>
-              My very first project <Icon icon={"GradeOutlined"}/>
-          </header>
-            <h2>
-                {<Alert variant="info">
-                    This is a "info" alert—check it out!
-                </Alert>}
-            </h2>
-        </Main>
-      </Wrapper>
+                <Main>
+                    <header>
+                        My very first project <Icon icon={"GradeOutlined"}/>
+                    </header>
+
+                    <div>
+                        <Switch>
+                            {this.getAllLinks().map((link, key) => (
+                                <Route
+                                    key={key}
+                                    path={link.href}
+                                    render={props => <Content {...props} extra={link}/>}
+                                />
+                            ))}
+                            <Route
+                                render={() => (
+                                    <Alert variant={"info"}>
+                                        No hay contenido, use el nav del sidebar.
+                                    </Alert>
+                                )}
+                            />
+                        </Switch>
+                    </div>
+                </Main>
+            </Wrapper>
+        </Router>
     );
   }
 }
