@@ -42,7 +42,7 @@ export default ({ section, onSectionCollapseToggle, sidebarCollapsed }) => {
               aria-controls={slug}
               aria-expanded={open}
             >
-              ...
+                <Icon icon={"MoreHoriz"} />
             </SectionOpenToggle>
           </>
         )}
