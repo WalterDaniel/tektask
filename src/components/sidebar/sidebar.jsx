@@ -12,7 +12,6 @@ const sidebarExpandedWidth = 243;
 const sidebarWidth = props =>
   props.collapsed ? sidebarCollapsedWidth : sidebarExpandedWidth;
 
-// SideNav
 const Sidebar = styled.div`
   background-color: #fff;
   border-right: 1px solid #dadada;
@@ -20,12 +19,12 @@ const Sidebar = styled.div`
   min-width: ${sidebarWidth}px;
   max-width: ${sidebarWidth}px;
   height: 100vh;
-  transition: all 0.3s;npm start
+  transition: all 0.3s;
 `;
 
 const CollapseToggleBtnContainer = styled.div`
   position: absolute;
-  bottom: 250px;
+  bottom: 50px;
   left: calc(${sidebarWidth}px - 13px);
   transition: all 0.3s;
 `;
