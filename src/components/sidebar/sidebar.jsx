@@ -3,7 +3,8 @@ import styled from "styled-components";
 import CompanyBrand from "../company-brand/company-brand";
 import CollapseToggleBtn from "./collapse-toggle-btn";
 
-import Icon from "../icon/icon";
+import Section from "./sidebar-section";
+import {ListGroup} from "react-bootstrap";
 
 const sidebarCollapsedWidth = 66;
 const sidebarExpandedWidth = 243;
@@ -14,12 +15,12 @@ const sidebarWidth = props =>
 // SideNav
 const Sidebar = styled.div`
   background-color: #fff;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid #dadada;
   width: ${sidebarWidth}px;
   min-width: ${sidebarWidth}px;
   max-width: ${sidebarWidth}px;
   height: 100vh;
-  transition: all 0.3s;
+  transition: all 0.3s;npm start
 `;
 
 const CollapseToggleBtnContainer = styled.div`
@@ -29,7 +30,17 @@ const CollapseToggleBtnContainer = styled.div`
   transition: all 0.3s;
 `;
 
-export default ({sidebarStatus, onSidebarCollapseToggle}) => {
+const StyledListGroupItem = styled(ListGroup.Item)`
+  &.current {
+    background-color: #f5f5f5;
+  }
+`;
+
+export default ({
+                    sidebarStatus,
+                    onSidebarCollapseToggle,
+                    onSectionCollapseToggle
+                }) => {
     const {collapsed, sections} = sidebarStatus;
   return (
     <Sidebar collapsed={collapsed}>
@@ -46,23 +57,24 @@ export default ({sidebarStatus, onSidebarCollapseToggle}) => {
         </CollapseToggleBtnContainer>
 
         {sections.length > 0 && (
-            <ul>
+            <ListGroup variant="flush">
                 {sections.map((section, key) => (
-                    <div>
-                        <li key={key}>
-                            <Icon icon={section.iconName}/> {section.name}
-                        </li>
-                        <ul>
-                            {section.links.map((link, key2) => (
-                                <li key={key2}>
-                                    <Icon icon={link.iconName}/>
-                                    <a href={link.href}>{link.value}</a>
-                                </li>
-                            ))}
-                        </ul>
+                    <div key={section.slug + key}>
+                        <StyledListGroupItem
+                            className={
+                                (collapsed ? " collapsed" : " asdasd") +
+                                (key === 1 ? " current" : "")
+                            }
+                        >
+                            <Section
+                                section={section}
+                                onSectionCollapseToggle={onSectionCollapseToggle}
+                                sidebarCollapsed={collapsed}
+                            />
+                        </StyledListGroupItem>
                     </div>
                 ))}
-            </ul>
+            </ListGroup>
         )}
     </Sidebar>
   );

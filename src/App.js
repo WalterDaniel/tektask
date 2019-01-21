@@ -4,6 +4,7 @@ import "./common/reset.css";
 import styled from "styled-components";
 import Sidebar from "./components/sidebar/sidebar";
 import Icon from "./components/icon/icon";
+import {Alert} from "react-bootstrap";
 
 import SidebarState from "./__mock__/sidebar/sidebarState";
 
@@ -23,9 +24,17 @@ class App extends Component {
     constructor(...props) {
         super(...props);
 
-        this.state = {};
+        this.state = {
+            sidebar: {
+                collapsed: false,
+                sections: []
+            }
+        };
 
         this.handleSidebarCollapseToggle = this.handleSidebarCollapseToggle.bind(
+            this
+        );
+        this.handleSectionCollapseToggle = this.handleSectionCollapseToggle.bind(
             this
         );
     }
@@ -35,6 +44,16 @@ class App extends Component {
         const {collapsed} = sidebar;
         sidebar.collapsed = !collapsed;
 
+        this.setState(sidebar);
+    }
+
+    handleSectionCollapseToggle(section) {
+        const sidebar = this.state.sidebar;
+        const sections = [...sidebar.sections];
+        const index = sections.indexOf(section);
+        sections[index] = {...section};
+        sections[index].open = !section.open;
+        sidebar.sections = sections;
         this.setState(sidebar);
     }
 
@@ -52,12 +71,17 @@ class App extends Component {
           <Sidebar
               sidebarStatus={this.state.sidebar}
               onSidebarCollapseToggle={this.handleSidebarCollapseToggle}
+              onSectionCollapseToggle={this.handleSectionCollapseToggle}
           />
         <Main>
           <header>
               My very first project <Icon icon={"GradeOutlined"}/>
           </header>
-          <h2>Content</h2>
+            <h2>
+                {<Alert variant="info">
+                    This is a "info" alert—check it out!
+                </Alert>}
+            </h2>
         </Main>
       </Wrapper>
     );
