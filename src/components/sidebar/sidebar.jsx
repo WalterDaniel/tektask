@@ -32,6 +32,7 @@ const CollapseToggleBtnContainer = styled.div`
 const StyledListGroupItem = styled(ListGroup.Item)`
   && {
     padding: 0;
+    border: 0;
   }
   &.current {
     background-color: #f5f5f5;

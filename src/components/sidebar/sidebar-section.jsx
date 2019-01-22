@@ -6,7 +6,8 @@ import { ListGroup, Collapse, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 const SectionContainer = styled.div`
-border-bottom: 1px solid #d1d1d1;
+  border-bottom: 1px solid #d1d1d1;
+
   ${ListGroup.Item}.current.collapsed & {
     color: #056cc2;
   }
@@ -18,13 +19,17 @@ const ColoredSpan = styled.span`
 
 const SectionTitle = styled.div`
   position: relative;
+  padding-left: 8px;
+  padding-right: 8px;
 
   & > div {
     font-weight: bold;
     font-size: 0.9em;
     display: flex;
-    justify-content: space-between;
-    padding: 5px 15px;
+    justify-content: ${({ sidebarCollapsed }) =>
+      sidebarCollapsed ? "center" : "space-between"};
+    padding: ${({ sidebarCollapsed }) =>
+      sidebarCollapsed ? "15px" : "5px 15px"};
     align-items: center;
   }
 
@@ -41,26 +46,24 @@ const SectionTitle = styled.div`
   }
 `;
 
-const StyledCollapse = styled(Collapse)`
-  ${Nav} {
-    padding: 8px 0;
-  }
-`;
-
 const StyledNavLink = styled(NavLink)`
   font-size: 1em;
   color: #2f3436;
-  padding: 5px 15px;
+  padding: 5px 23px;
 
-  &:hover {
+  &:hover,
+  &:active {
     text-decoration: none;
-    background-color: red;
+    background-color: #dbe0e6;
+    color: #056cc2;
   }
 
   & svg {
-    font-size: 1em;
+    font-size: 1.1em;
   }
 `;
+
+const StyledCollapse = styled(Collapse)``;
 
 const Bar = styled.span`
   &:before {
@@ -91,6 +94,7 @@ export default ({ section, onSectionCollapseToggle, sidebarCollapsed }) => {
         onClick={() => onSectionCollapseToggle(section)}
         aria-controls={slug}
         aria-expanded={open}
+        sidebarCollapsed={sidebarCollapsed}
       >
         {sidebarCollapsed ? (
           <div>
@@ -104,7 +108,7 @@ export default ({ section, onSectionCollapseToggle, sidebarCollapsed }) => {
             </ColoredSpan>
           </div>
         )}
-        {!sidebarCollapsed && <Bar />}
+        {!sidebarCollapsed && open && <Bar />}
       </SectionTitle>
 
       {!sidebarCollapsed && (
