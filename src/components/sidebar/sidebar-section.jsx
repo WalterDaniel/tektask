@@ -2,30 +2,83 @@ import React from "react";
 import Icon from "../icon/icon";
 import IconText from "../icon/icon-text";
 import styled from "styled-components";
-import { ListGroup } from "react-bootstrap";
-import { Collapse, Nav } from "react-bootstrap";
+import { ListGroup, Collapse, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 const SectionContainer = styled.div`
-  padding: 0 15px;
-
   ${ListGroup.Item}.current.collapsed & {
     color: #056cc2;
   }
 `;
 
+const ColoredSpan = styled.span`
+    color: ${({color}) => (color)};
+`;
+
 const SectionTitle = styled.div`
-  font-weight: bold;
-  font-size: 0.9em;
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 0px;
-  align-items: center;
+
+    position: relative;
+    
+    & > div {
+        font-weight: bold;
+        font-size: 0.9em;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 15px;
+        align-items: center;
+    }
+  
+  &:hover {
+    cursor:pointer;
+  }
+    
+    ${ListGroup.Item}.collapsed & {
+        border-bottom: 0;
+    }
+    
+    & ${ColoredSpan} {
+        color: #A2A3A4;
+    }
 `;
 
 const StyledCollapse = styled(Collapse)`
-  border-top: 1px solid #d1d1d1;
+    ${Nav} {
+        padding: 8px 0;
+    }
 `;
+
+const StyledNavLink = styled(NavLink)`
+  font-size: 1em;
+  color: #2F3436;
+  padding: 5px 15px;
+  
+  &:hover {
+    text-decoration: none;
+    background-color: red;
+  }
+  
+  & svg {
+    font-size: 1em;
+  }
+`;
+
+const Bar = styled.span`
+&:before {
+        left: 50%;
+    }
+
+    &:after {
+        right: 50%;
+    }
+    
+    &:before, &:after {
+        content: '';
+        height: 1px;
+        width: 44%;
+        bottom: 0px;
+        position: absolute;
+        background: #d1d1d1;
+    }`;
 
 export default ({ section, onSectionCollapseToggle, sidebarCollapsed }) => {
   const { open, slug } = section;
@@ -37,15 +90,19 @@ export default ({ section, onSectionCollapseToggle, sidebarCollapsed }) => {
         aria-controls={slug}
         aria-expanded={open}
       >
-        {sidebarCollapsed ? (
-          <Icon icon={section.iconName} />
+          {sidebarCollapsed ? (
+          <div>
+            <Icon icon={section.iconName} />
+          </div>
         ) : (
-          <>
+          <div>
             <IconText iconName={section.iconName} text={section.name} />
-
-            <Icon icon={"MoreHoriz"} />
-          </>
+              <ColoredSpan color={"#A2A3A4"}> <Icon icon={"MoreHoriz"} /> </ColoredSpan>
+          </div>
         )}
+          {!sidebarCollapsed &&
+              <Bar />
+          }
       </SectionTitle>
 
       {!sidebarCollapsed && (
@@ -53,9 +110,9 @@ export default ({ section, onSectionCollapseToggle, sidebarCollapsed }) => {
           <div id={slug}>
             <Nav className="flex-column">
               {section.links.map((link, key) => (
-                <NavLink key={key} to={link.href} activeClassName="current">
+                <StyledNavLink key={key} to={link.href} activeClassName="current">
                   <IconText iconName={link.iconName} text={link.value} />
-                </NavLink>
+                </StyledNavLink>
               ))}
             </Nav>
           </div>
