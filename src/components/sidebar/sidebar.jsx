@@ -34,7 +34,7 @@ const StyledListGroupItem = styled(ListGroup.Item)`
     padding: 0;
     border: 0;
   }
-  &.current {
+  &.current-section {
     background-color: #f5f5f5;
   }
 `;
@@ -66,7 +66,7 @@ export default ({
               <StyledListGroupItem
                 className={
                   (collapsed ? " collapsed" : "") +
-                  (key === 1 ? " current" : "")
+                  (key === 1 ? " current-section" : "")
                 }
               >
                 <Section

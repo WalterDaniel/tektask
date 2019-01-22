@@ -52,7 +52,7 @@ const StyledNavLink = styled(NavLink)`
   padding: 5px 23px;
 
   &:hover,
-  &:active {
+  &.active {
     text-decoration: none;
     background-color: #dbe0e6;
     color: #056cc2;
@@ -119,7 +119,8 @@ export default ({ section, onSectionCollapseToggle, sidebarCollapsed }) => {
                 <StyledNavLink
                   key={key}
                   to={link.href}
-                  activeClassName="current"
+                  activeClassName="active"
+                  exact={true}
                 >
                   <IconText iconName={link.iconName} text={link.value} />
                 </StyledNavLink>

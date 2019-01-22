@@ -4,6 +4,7 @@ const sidebarState = {
     sections: [
       {
         iconName: "Dashboard",
+        path: "/dashboard",
         slug: "dashboard",
         name: "Dashboard",
         open: true,
@@ -24,6 +25,7 @@ const sidebarState = {
       },
       {
         iconName: "DeveloperBoard",
+        path: "/my_projects",
         slug: "my_projects",
         name: "My Projects",
         open: true,
@@ -56,6 +58,7 @@ const sidebarState = {
       },
       {
         iconName: "People",
+        path: "/team",
         slug: "team",
         name: "Team",
         open: true,
