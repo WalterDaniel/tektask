@@ -14,12 +14,18 @@ const sidebarWidth = props =>
 
 const Sidebar = styled.div`
   background-color: #fff;
-  border-right: 1px solid #dadada;
   width: ${sidebarWidth}px;
   min-width: ${sidebarWidth}px;
   max-width: ${sidebarWidth}px;
   height: 100vh;
   transition: all 0.3s;
+  z-index: 1;
+`;
+
+const NavSections = styled.div`
+  border-right: 1px solid #dadada;
+  box-shadow: 0px 0 20px 0px rgba(0, 0, 0, 0.2);
+  height: calc(100vh - 80px);
 `;
 
 const CollapseToggleBtnContainer = styled.div`
@@ -59,26 +65,28 @@ export default ({
         />
       </CollapseToggleBtnContainer>
 
-      {sections.length > 0 && (
-        <ListGroup variant="flush">
-          {sections.map((section, key) => (
-            <div key={section.slug + key}>
-              <StyledListGroupItem
-                className={
-                  (collapsed ? " collapsed" : "") +
-                  (key === 1 ? " current-section" : "")
-                }
-              >
-                <Section
-                  section={section}
-                  onSectionCollapseToggle={onSectionCollapseToggle}
-                  sidebarCollapsed={collapsed}
-                />
-              </StyledListGroupItem>
-            </div>
-          ))}
-        </ListGroup>
-      )}
+      <NavSections>
+        {sections.length > 0 && (
+          <ListGroup variant="flush">
+            {sections.map((section, key) => (
+              <div key={section.slug + key}>
+                <StyledListGroupItem
+                  className={
+                    (collapsed ? " collapsed" : "") +
+                    (key === 1 ? " current-section" : "")
+                  }
+                >
+                  <Section
+                    section={section}
+                    onSectionCollapseToggle={onSectionCollapseToggle}
+                    sidebarCollapsed={collapsed}
+                  />
+                </StyledListGroupItem>
+              </div>
+            ))}
+          </ListGroup>
+        )}
+      </NavSections>
     </Sidebar>
   );
 };

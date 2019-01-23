@@ -44,6 +44,10 @@ const SectionTitle = styled.div`
   & ${ColoredSpan} {
     color: #a2a3a4;
   }
+
+  & svg {
+    font-size: 26px;
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -63,7 +67,10 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-const StyledCollapse = styled(Collapse)``;
+const StyledCollapse = styled(Collapse)`
+  padding-top: 7px;
+  padding-bottom: 7px;
+`;
 
 const Bar = styled.span`
   &:before {
@@ -104,7 +111,7 @@ export default ({ section, onSectionCollapseToggle, sidebarCollapsed }) => {
           <div>
             <IconText iconName={section.iconName} text={section.name} />
             <ColoredSpan color={"#A2A3A4"}>
-              <Icon icon={"MoreHoriz"} />
+              <Icon icon={"MoreHorizRounded"} />
             </ColoredSpan>
           </div>
         )}
