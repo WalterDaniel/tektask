@@ -1,6 +1,7 @@
 import React from "react";
 import Icon from "../icon/icon";
 import IconText from "../icon/icon-text";
+import ColoredIcon from "../icon/colored-icon";
 import styled from "styled-components";
 import { ListGroup, Collapse, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
@@ -11,10 +12,6 @@ const SectionContainer = styled.div`
   ${ListGroup.Item}.current.collapsed & {
     color: #056cc2;
   }
-`;
-
-const ColoredSpan = styled.span`
-  color: ${({ color }) => color};
 `;
 
 const SectionTitle = styled.div`
@@ -39,10 +36,6 @@ const SectionTitle = styled.div`
 
   ${ListGroup.Item}.collapsed & {
     border-bottom: 0;
-  }
-
-  & ${ColoredSpan} {
-    color: #a2a3a4;
   }
 
   & svg {
@@ -110,9 +103,7 @@ export default ({ section, onSectionCollapseToggle, sidebarCollapsed }) => {
         ) : (
           <div>
             <IconText iconName={section.iconName} text={section.name} />
-            <ColoredSpan color={"#A2A3A4"}>
-              <Icon icon={"MoreHorizRounded"} />
-            </ColoredSpan>
+            <ColoredIcon colorName={"#A2A3A4"} iconName={"MoreHorizRounded"} />
           </div>
         )}
         {!sidebarCollapsed && open && <Bar />}

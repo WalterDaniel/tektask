@@ -2,7 +2,7 @@ import React from "react";
 import LogoImg from "../logo/logo";
 import styled from "styled-components";
 
-const CompanyBrandContainer = styled.div`
+const CompanyBrand = styled.div`
   height: 80px;
   overflow: hidden;
   background-color: #2f3436;
@@ -24,10 +24,10 @@ const CompanyBrandContainer = styled.div`
 
 export default ({ collapsed, sidebarWidth }) => {
   return (
-    <CompanyBrandContainer collapsed={collapsed} sidebarWidth={sidebarWidth}>
+    <CompanyBrand collapsed={collapsed} sidebarWidth={sidebarWidth}>
       <a href="/" title="TekTask" rel="home">
         <LogoImg collapsed={collapsed} />
       </a>
-    </CompanyBrandContainer>
+    </CompanyBrand>
   );
 };

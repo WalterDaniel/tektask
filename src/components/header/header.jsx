@@ -6,6 +6,7 @@ import { Button } from "react-bootstrap";
 import { DateInterval } from "../../__mock__/data/mock-data";
 import MembersWrapper from "../members/members-wrapper";
 import ProfileSettings from "../members/profile-settings";
+import ColoredIcon from "../icon/colored-icon";
 
 const Header = styled.header`
   background-color: #24282a;
@@ -28,6 +29,14 @@ const HeaderSection = styled.div`
   }
 `;
 
+const StyledColoredIcon = styled(ColoredIcon)`
+  margin-left: 10px;
+
+  svg {
+    font-size: 1.1em;
+  }
+`;
+
 const PageTitleWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -38,15 +47,6 @@ const PageTitle = styled.span`
   font-weight: bold;
   font-size: 1.3em;
   align-items: center;
-`;
-
-const BlueStarBorder = styled.span`
-  margin-left: 10px;
-  color: #4887cb;
-
-  svg {
-    font-size: 1.1em;
-  }
 `;
 
 const PageSubtitle = styled.span`
@@ -67,13 +67,17 @@ export default ({ pageTitle }) => {
         <div>
           <PageTitleWrapper>
             <PageTitle> {pageTitle} </PageTitle>
-            <BlueStarBorder>
-              <Icon icon={"StarBorderRounded"} />
-            </BlueStarBorder>
+            <StyledColoredIcon
+                colorName={"#4887CB"}
+                iconName={"StarBorderRounded"}
+              />
           </PageTitleWrapper>
           <div>
             <PageSubtitle>
-              <IconText iconName={"EventAvailableRounded"} text={DateInterval()} />
+              <IconText
+                iconName={"EventAvailableRounded"}
+                text={DateInterval()}
+              />
             </PageSubtitle>
           </div>
         </div>
