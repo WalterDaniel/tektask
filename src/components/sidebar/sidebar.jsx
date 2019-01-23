@@ -28,7 +28,7 @@ const NavSections = styled.div`
   height: calc(100vh - 80px);
 `;
 
-const CollapseToggleBtnContainer = styled.div`
+const StyledCollapseToggleBtn = styled(CollapseToggleBtn)`
   position: absolute;
   bottom: 50px;
   left: calc(${sidebarWidth}px - 13px);
@@ -58,12 +58,10 @@ export default ({
         sidebarWidth={sidebarWidth(collapsed)}
       />
 
-      <CollapseToggleBtnContainer collapsed={collapsed}>
-        <CollapseToggleBtn
-          collapsed={collapsed}
-          onSidebarCollapseToggle={onSidebarCollapseToggle}
-        />
-      </CollapseToggleBtnContainer>
+      <StyledCollapseToggleBtn
+        collapsed={collapsed}
+        onSidebarCollapseToggle={onSidebarCollapseToggle}
+      />
 
       <NavSections>
         {sections.length > 0 && (
