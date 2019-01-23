@@ -3,7 +3,7 @@ const sidebarState = {
     collapsed: false,
     sections: [
       {
-        iconName: "Dashboard",
+        iconName: "DashboardRounded",
         path: "/dashboard",
         slug: "dashboard",
         name: "Dashboard",
@@ -11,20 +11,20 @@ const sidebarState = {
         links: [
           {
             slug: "dashboard_my_week",
-            iconName: "ViewWeek",
+            iconName: "ViewWeekRounded",
             href: "/dashboard/my_week",
             value: "My Week"
           },
           {
             slug: "dashboard_my_timesheet",
-            iconName: "EventNote",
+            iconName: "EventNoteRounded",
             href: "/dashboard/my_timesheet",
             value: "My Timesheet"
           }
         ]
       },
       {
-        iconName: "DeveloperBoard",
+        iconName: "ChromeReaderModeRounded",
         path: "/my_projects",
         slug: "my_projects",
         name: "My Projects",
@@ -32,32 +32,32 @@ const sidebarState = {
         links: [
           {
             slug: "my_projects_test",
-            iconName: "StarRate",
+            iconName: "StarRateRounded",
             href: "/my_projects/test",
             value: "Test"
           },
           {
             slug: "my_projects_very_first",
-            iconName: "StarRate",
+            iconName: "StarRateRounded",
             href: "/my_projects/very_first",
             value: "My very first project"
           },
           {
             slug: "my_projects_private_board",
-            iconName: "StarRate",
+            iconName: "StarRateRounded",
             href: "/my_projects/private_board",
             value: "Private board"
           },
           {
             slug: "my_projects_blueoceantech",
-            iconName: "StarRate",
+            iconName: "StarRateRounded",
             href: "/my_projects/blueoceantech",
             value: "Blueoceantech"
           }
         ]
       },
       {
-        iconName: "People",
+        iconName: "PeopleRounded",
         path: "/team",
         slug: "team",
         name: "Team",
@@ -65,13 +65,13 @@ const sidebarState = {
         links: [
           {
             slug: "team_front_end",
-            iconName: "PeopleOutline",
+            iconName: "PeopleOutlineRounded",
             href: "/team/front_end",
             value: "Front End"
           },
           {
             slug: "team_success_team",
-            iconName: "PeopleOutline",
+            iconName: "PeopleOutlineRounded",
             href: "/team/success_team",
             value: "Success Team"
           }
