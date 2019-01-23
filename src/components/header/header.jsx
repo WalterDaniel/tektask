@@ -40,7 +40,7 @@ const PageTitle = styled.span`
   align-items: center;
 `;
 
-const BlueGrade = styled.span`
+const BlueStarBorder = styled.span`
   margin-left: 10px;
   color: #4887cb;
 
@@ -67,13 +67,13 @@ export default ({ pageTitle }) => {
         <div>
           <PageTitleWrapper>
             <PageTitle> {pageTitle} </PageTitle>
-            <BlueGrade>
-              <Icon icon={"GradeOutlined"} />
-            </BlueGrade>
+            <BlueStarBorder>
+              <Icon icon={"StarBorderRounded"} />
+            </BlueStarBorder>
           </PageTitleWrapper>
           <div>
             <PageSubtitle>
-              <IconText iconName={"EventAvailable"} text={DateInterval()} />
+              <IconText iconName={"EventAvailableRounded"} text={DateInterval()} />
             </PageSubtitle>
           </div>
         </div>
@@ -87,7 +87,7 @@ export default ({ pageTitle }) => {
         </div>
 
         <div>
-          <Icon icon={"MoreHoriz"} />
+          <Icon icon={"MoreHorizRounded"} />
         </div>
       </HeaderSection>
 
@@ -99,7 +99,7 @@ export default ({ pageTitle }) => {
         </div>
 
         <div>
-          <Icon icon={"NotificationsNone"} />
+          <Icon icon={"NotificationsNoneRounded"} />
         </div>
 
         <ProfileSettings />
