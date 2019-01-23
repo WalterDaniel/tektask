@@ -5,6 +5,7 @@ import ColoredIcon from "../icon/colored-icon";
 import styled from "styled-components";
 import { ListGroup, Collapse, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import OutlinedDashedBtn from "../button/button-outlined-dashed";
 
 const SectionContainer = styled.div`
   border-bottom: 1px solid #d1d1d1;
@@ -44,7 +45,7 @@ const SectionTitle = styled.div`
 `;
 
 const StyledNavLink = styled(NavLink)`
-  font-size: 1em;
+  font-size: 0.9em;
   color: #2f3436;
   padding: 5px 23px;
 
@@ -123,6 +124,16 @@ export default ({ section, onSectionCollapseToggle, sidebarCollapsed }) => {
                   <IconText iconName={link.iconName} text={link.value} />
                 </StyledNavLink>
               ))}
+
+              <OutlinedDashedBtn
+                title={section.crud.create.value}
+                variant="outline-secondary"
+              >
+                <IconText
+                  iconName={section.crud.create.iconName}
+                  text={section.crud.create.value}
+                />
+              </OutlinedDashedBtn>
             </Nav>
           </div>
         </StyledCollapse>

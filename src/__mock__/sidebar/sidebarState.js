@@ -8,6 +8,13 @@ const sidebarState = {
         slug: "dashboard",
         name: "Dashboard",
         open: true,
+          crud: {
+              create: {
+                  iconName: "AddRounded",
+                  href: "/new",
+                  value: "Add Dashboard"
+              }
+          },
         links: [
           {
             slug: "dashboard_my_week",
@@ -29,28 +36,35 @@ const sidebarState = {
         slug: "my_projects",
         name: "My Projects",
         open: true,
+          crud: {
+              create: {
+                  iconName: "AddRounded",
+                  href: "/new",
+                  value: "Add Project"
+              }
+          },
         links: [
           {
             slug: "my_projects_test",
-            iconName: "StarRateRounded",
+            iconName: "StarRounded",
             href: "/my_projects/test",
             value: "Test"
           },
           {
             slug: "my_projects_very_first",
-            iconName: "StarRateRounded",
+            iconName: "StarRounded",
             href: "/my_projects/very_first",
             value: "My very first project"
           },
           {
             slug: "my_projects_private_board",
-            iconName: "StarRateRounded",
+            iconName: "StarRounded",
             href: "/my_projects/private_board",
             value: "Private board"
           },
           {
             slug: "my_projects_blueoceantech",
-            iconName: "StarRateRounded",
+            iconName: "StarRounded",
             href: "/my_projects/blueoceantech",
             value: "Blueoceantech"
           }
@@ -62,6 +76,13 @@ const sidebarState = {
         slug: "team",
         name: "Team",
         open: true,
+        crud: {
+          create: {
+            iconName: "AddRounded",
+            href: "/new",
+            value: "Add Team"
+          }
+        },
         links: [
           {
             slug: "team_front_end",

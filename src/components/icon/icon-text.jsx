@@ -9,11 +9,12 @@ const IconText = styled.span`
 
   & > svg {
     margin: 2px 5px 2px 0;
+    font-size: 0.9em;
   }
 `;
 
-export default ({ iconName, text }) => (
-  <IconText>
+export default ({ iconName, text, className }) => (
+  <IconText className={className}>
     <Icon icon={iconName} /> {text}
   </IconText>
 );

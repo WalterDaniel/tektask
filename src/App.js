@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import "./common/reset.css";
 import styled from "styled-components";
 import Sidebar from "./components/sidebar/sidebar";
 import Header from "./components/header/header";
