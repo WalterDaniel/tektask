@@ -19,9 +19,14 @@ const CollapseBtn = styled.button`
   }
 `;
 
-const CollapseToggleBtn = ({ collapsed, onSidebarCollapseToggle }) => {
+const CollapseToggleBtn = ({
+  collapsed,
+  onSidebarCollapseToggle,
+  className
+}) => {
   return (
     <CollapseBtn
+      className={className}
       type="button"
       title="Sidebar collapse toggle"
       onClick={() => {
